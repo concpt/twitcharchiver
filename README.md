@@ -112,6 +112,10 @@ We will use Docker to monitor Twitch and save them to mounted filesystem.
 ```
 docker create --name TwitchUsername --restart unless-stopped -v /VODs/TwitchUsernameVOD:/home/download -e streamLink='twitch.tv/TwitchUsername' -e streamQuality='best' -e streamName='TwitchUsername' -e streamOptions='--twitch-disable-hosting --twitch-disable-ads' -e uid='0' -e gid='0' lauwarm/streamlink-recorder
 ```
+2. Run Docker Containers
+```
+docker start TwitchUsername
+```
   **Replace `TwitchUsername` with your desired Twitch username**
 
   *If you want to record multiple streams, repeat step.*
