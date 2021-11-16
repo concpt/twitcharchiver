@@ -129,7 +129,9 @@ sudo nano /etc/docker/daemon.json
    "data-root": "/docker"
 }
 ```
-    - Use `CTRL-X` to exit, `Y` to save, `ENTER` to write changes
+
+  *Use `CTRL-X` to exit, `Y` to save, `ENTER` to write changes*
+
 
   - Start Docker service
 ```
