@@ -118,7 +118,7 @@ sudo systemctl stop docker
 ```
 sudo apt install nano
 ```
-  - Use nano to create/edit Default Docker Root Directory
+  - Use nano to create/edit default Docker JSON file 
 ```
 sudo nano /etc/docker/daemon.json
 ```
@@ -129,13 +129,18 @@ sudo nano /etc/docker/daemon.json
    "data-root": "/docker"
 }
 ```
-  - Use `CTRL-X` to exit, `Y` to save, `ENTER` to write changes
+    - Use `CTRL-X` to exit, `Y` to save, `ENTER` to write changes
 
-2. Create Docker Containers for each Twitch Stream
+  - Start Docker service
+```
+sudo systemctl start docker
+```
+### **Step 5 - Create Docker Containers**
+1. Create Docker Containers for each Twitch Stream
 ```
 docker create --name TwitchUsername --restart unless-stopped -v /data/VODs/TwitchUsernameVOD:/home/download -e streamLink='twitch.tv/TwitchUsername' -e streamQuality='best' -e streamName='TwitchUsername' -e streamOptions='--twitch-disable-hosting --twitch-disable-ads' -e uid='0' -e gid='0' lauwarm/streamlink-recorder
 ```
-3. Run Docker Containers
+2. Run Docker Containers
 ```
 docker start TwitchUsername
 ```
