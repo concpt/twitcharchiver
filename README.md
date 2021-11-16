@@ -40,7 +40,7 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
 
   1. Update the `apt` package repository:
   ```
-  sudo apt updates
+  sudo apt update
   ```
   2. Install packages to allow `apt` to use a repository over HTTPS:
   ```
@@ -63,6 +63,8 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
   5. Update the `apt` repository and install the *latest* Docker packages:
   ```
   sudo apt-get update
+  ```
+  ```
   sudo apt-get install docker-ce docker-ce-cli containerd.io
   ```
 
