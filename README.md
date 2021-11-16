@@ -148,4 +148,4 @@ docker start TwitchUsername
 ```
   **Replace `TwitchUsername` with your desired Twitch username**
 
-  *If you want to record multiple streams, repeat step.*
+  *If you want to record multiple streams, repeat [Step 5](https://github.com/concpt/twitcharchiver#step-5---create-docker-containers).*
