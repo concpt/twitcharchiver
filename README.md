@@ -126,7 +126,7 @@ sudo nano /etc/docker/daemon.json
 
 ```
 {
-   "data-root": "/docker"
+   "data-root": "/data/docker"
 }
 ```
 
