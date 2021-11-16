@@ -78,16 +78,15 @@ We will use Rclone to mount Google Drive as Local Storage.
     scp *.json username@destination_ip:/
     ```
 
-2. Create a Default Directory for VODs
+2. Create a Default Directory for VODs and Docker
 ```
-mkdir /VODs
+sudo mkdir -p /data/docker /data/VODs
 ```
-2. Install Rclone:
+3. Install Rclone & Mount Dependencies:
 ```
-sudo apt install rclone
+sudo apt install rclone fuse
 ```
-
-3. Configure Rclone:
+4. Configure Rclone:
 ```
 rclone config
 ```
@@ -102,17 +101,41 @@ rclone config
 
 5. Mount Google Drive as local filesystem
 ```
-rclone mount --daemon --vfs-cache-mode full --drive-impersonate user@domain.com gdrive:VODs /VODs
+rclone mount --daemon --vfs-cache-mode full --drive-impersonate user@domain.com gdrive:data /data
 ```
   **Replace `user@domain.com` with your Google Workspace Email Address**
 
+
 ### **Step 4 - Setup Docker**
 We will use Docker to monitor Twitch and save them to mounted filesystem.
-1. Create Docker Containers for each Twitch Stream
+
+1. Setup Docker to use Google Workspace as Default Directory
+  - Stop Docker service
 ```
-docker create --name TwitchUsername --restart unless-stopped -v /VODs/TwitchUsernameVOD:/home/download -e streamLink='twitch.tv/TwitchUsername' -e streamQuality='best' -e streamName='TwitchUsername' -e streamOptions='--twitch-disable-hosting --twitch-disable-ads' -e uid='0' -e gid='0' lauwarm/streamlink-recorder
+sudo systemctl stop docker
 ```
-2. Run Docker Containers
+  - Install nano text editor
+```
+sudo apt install nano
+```
+  - Use nano to create/edit Default Docker Root Directory
+```
+sudo nano /etc/docker/daemon.json
+```
+  - Copy the following into `/etc/docker/daemon.json`
+
+```
+{
+   "data-root": "/docker"
+}
+```
+  - Use `CTRL-X` to exit, `Y` to save, `ENTER` to write changes
+
+2. Create Docker Containers for each Twitch Stream
+```
+docker create --name TwitchUsername --restart unless-stopped -v /data/VODs/TwitchUsernameVOD:/home/download -e streamLink='twitch.tv/TwitchUsername' -e streamQuality='best' -e streamName='TwitchUsername' -e streamOptions='--twitch-disable-hosting --twitch-disable-ads' -e uid='0' -e gid='0' lauwarm/streamlink-recorder
+```
+3. Run Docker Containers
 ```
 docker start TwitchUsername
 ```
