@@ -71,7 +71,7 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
 ### **Step 3 - Setup Rclone**
 We will use Rclone to mount Google Drive as Local Storage.
 
-1. Upload your JSON file to your server.
+1. Upload your JSON file to your server:
 
     - Windows: Use [WinSCP](https://winscp.net)
 
@@ -80,9 +80,9 @@ We will use Rclone to mount Google Drive as Local Storage.
     scp *.json username@destination_ip:/
     ```
 
-2. Create a Default Directory for VODs and Docker
+2. Create a Default Directory:
 ```
-sudo mkdir -p /data/docker /data/VODs
+sudo mkdir /data
 ```
 3. Install Rclone & Mount Dependencies:
 ```
@@ -101,7 +101,7 @@ rclone config
   - Enter `/*.json` for `service_account_file`
 
 
-5. Mount Google Drive as local filesystem
+5. Mount Google Drive as local filesystem:
 ```
 rclone mount --daemon --vfs-cache-mode full --drive-impersonate user@domain.com gdrive:data /data
 ```
@@ -111,8 +111,13 @@ rclone mount --daemon --vfs-cache-mode full --drive-impersonate user@domain.com 
 ### **Step 4 - Setup Docker**
 We will use Docker to monitor Twitch and save them to mounted filesystem.
 
-1. Setup Docker to use Google Workspace as Default Directory
-  - Stop Docker service
+1. Setup Docker to use Google Workspace as Default Directory:
+
+  -  Create Docker Default Directory
+```
+sudo mkdir -p /data/docker
+```
+  -  Stop Docker service
 ```
 sudo systemctl stop docker
 ```
@@ -140,11 +145,15 @@ sudo nano /etc/docker/daemon.json
 sudo systemctl start docker
 ```
 ### **Step 5 - Create Docker Containers**
-1. Create Docker Containers for each Twitch Stream
+1. Create directory for VODs
+```
+sudo mkdir -p /data/VODs
+```
+1. Create Docker Containers for each Twitch Stream:
 ```
 docker create --name TwitchUsername --restart unless-stopped -v /data/VODs/TwitchUsernameVOD:/home/download -e streamLink='twitch.tv/TwitchUsername' -e streamQuality='best' -e streamName='TwitchUsername' -e streamOptions='--twitch-disable-hosting --twitch-disable-ads' -e uid='0' -e gid='0' lauwarm/streamlink-recorder
 ```
-2. Run Docker Containers
+2. Run Docker Containers:
 ```
 docker start TwitchUsername
 ```
