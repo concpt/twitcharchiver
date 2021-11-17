@@ -68,12 +68,11 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
   ```
   sudo apt-get install docker-ce docker-ce-cli containerd.io
   ```
-
   7. Upload your JSON file to your server:
 
-    - Windows: Use [WinSCP](https://winscp.net)
+   - Windows: Use [WinSCP](https://winscp.net)
 
-    - Linux:
+   - Linux:
 
     ```
     scp *.json username@destination_ip:/
