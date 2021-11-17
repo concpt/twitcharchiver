@@ -80,15 +80,12 @@ We will use Rclone to mount Google Drive as Local Storage.
     scp *.json username@destination_ip:/
     ```
 
-2. Create a Default Directory:
-```
-sudo mkdir /data
-```
-3. Install Rclone & Mount Dependencies:
+
+2. Install Rclone & Mount Dependencies:
 ```
 sudo apt install rclone fuse
 ```
-4. Configure Rclone:
+3. Configure Rclone:
 ```
 rclone config
 ```
@@ -108,39 +105,7 @@ rclone mount --daemon --vfs-cache-mode full --drive-impersonate user@domain.com 
   **Replace `user@domain.com` with your Google Workspace Email Address**
 
 
-### **Step 4 - Setup Docker**
-We will use Docker to monitor Twitch and save them to mounted filesystem.
-
-1. Setup Docker to use Google Workspace as Default Directory:
-
-  -  Create Docker Default Directory
-```
-sudo mkdir -p /data/docker
-```
-  -  Stop Docker service
-```
-sudo systemctl stop docker
-```
-  - Use nano to create/edit default Docker JSON file 
-```
-sudo nano /etc/docker/daemon.json
-```
-  - Copy the following into `/etc/docker/daemon.json`
-
-```
-{
-   "data-root": "/data/docker"
-}
-```
-
-  *Use `CTRL-X` to exit, `Y` to save, `ENTER` to write changes*
-
-
-  - Start Docker service
-```
-sudo systemctl start docker
-```
-### **Step 5 - Create Docker Containers**
+### **Step 4 - Create Docker Containers**
 1. Create directory for VODs
 ```
 sudo mkdir -p /data/VODs
