@@ -74,9 +74,9 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
 
    - Linux:
 
-    ```
-    scp *.json username@destination_ip:/
-    ```
+  ```
+  scp *.json username@destination_ip:/
+  ```
 
 ### **Step 3 - Setup Rclone**
 We will use Rclone to mount Google Drive as Local Storage.
