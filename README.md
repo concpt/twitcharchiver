@@ -121,10 +121,6 @@ sudo mkdir -p /data/docker
 ```
 sudo systemctl stop docker
 ```
-  - Install nano text editor
-```
-sudo apt install nano
-```
   - Use nano to create/edit default Docker JSON file 
 ```
 sudo nano /etc/docker/daemon.json
