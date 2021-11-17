@@ -33,7 +33,7 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
     - Add the following to OAuth scopes
        `https://www.googleapis.com/auth/drive`
   - Click on Authorize
-3. 
+ 
 ### **Step 2 - Install Docker**
 
   In order to install Docker, you need to setup the official Docker Repository.
@@ -60,14 +60,16 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
     "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   ```
-  5. Update the `apt` repository and install the *latest* Docker packages:
+  5. Update the `apt` repository:
   ```
   sudo apt-get update
   ```
+  6. Install the *latest* Docker packages:
   ```
   sudo apt-get install docker-ce docker-ce-cli containerd.io
   ```
-  6. Upload your JSON file to your server:
+
+  7. Upload your JSON file to your server:
 
     - Windows: Use [WinSCP](https://winscp.net)
 
