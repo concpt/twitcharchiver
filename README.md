@@ -98,7 +98,7 @@ rclone config
   - Enter `/*.json` for `service_account_file`
 
 
-5. Mount Google Drive as local filesystem:
+4. Mount Google Drive as local filesystem:
 ```
 rclone mount --daemon --vfs-cache-mode full --drive-impersonate user@domain.com gdrive:data /data
 ```
