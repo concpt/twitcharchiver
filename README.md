@@ -110,11 +110,11 @@ rclone mount --daemon --vfs-cache-mode full --drive-impersonate user@domain.com 
 ```
 sudo mkdir -p /data/VODs
 ```
-1. Create Docker Containers for each Twitch Stream:
+2. Create Docker Containers for each Twitch Stream:
 ```
 docker create --name TwitchUsername --restart unless-stopped -v /data/VODs/TwitchUsernameVOD:/home/download -e streamLink='twitch.tv/TwitchUsername' -e streamQuality='best' -e streamName='TwitchUsername' -e streamOptions='--twitch-disable-hosting --twitch-disable-ads' -e uid='0' -e gid='0' lauwarm/streamlink-recorder
 ```
-2. Run Docker Containers:
+3. Run Docker Containers:
 ```
 docker start TwitchUsername
 ```
