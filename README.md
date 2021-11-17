@@ -74,6 +74,7 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
     - Windows: Use [WinSCP](https://winscp.net)
 
     - Linux:
+
     ```
     scp *.json username@destination_ip:/
     ```
