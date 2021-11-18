@@ -3,7 +3,7 @@
 In this guide, we'll explain how to record any Twitch live stream in real-time and automatically upload to the Cloud (Google Workspace) using your Debian server. It allows you to be able to save live streams from your favorite streamers without having to worry about deleted VODs or muted VODs due to DMCA. Google Workspace is commonly used for business and enterprise applications but it's perfect for uploading and storing large files.
 
 ## Prerequisites
-- You will need a Debian Linux VPS/Server with root or regular, non-root user with sudo privileges configured on your server.
+- You will need a Debian Linux VPS/Server with root privileges configured on your server.
 - You will need a Google Workspace account with an active subscription (Business Standard, Business Plus or Enterprise).
 
 
@@ -100,7 +100,7 @@ rclone config
 
 3. Mount Google Drive as local filesystem:
 ```
-rclone mount --daemon --vfs-cache-mode full --drive-impersonate user@domain.com gdrive:VODs /VODs
+rclone mount --daemon --drive-impersonate user@domain.com gdrive:VODs /VODs
 ```
   **Replace `user@domain.com` with your Google Workspace Email Address**
 
