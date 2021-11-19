@@ -101,7 +101,7 @@ rclone config
 ```
 mkdir /VODs
 ```
-3. Mount Google Drive as local filesystem:
+4. Mount Google Drive as local filesystem:
 ```
 rclone mount --daemon --drive-impersonate user@domain.com gdrive:VODs /VODs
 ```
