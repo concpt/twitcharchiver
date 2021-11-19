@@ -44,7 +44,7 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
   ```
   2. Install packages to allow `apt` to use a repository over HTTPS:
   ```
-  sudo apt-get install \
+  sudo apt install \
     ca-certificates \
     curl \
     gnupg \
@@ -62,11 +62,11 @@ In this guide, we'll explain how to record any Twitch live stream in real-time a
   ```
   5. Update the `apt` repository:
   ```
-  sudo apt-get update
+  sudo apt update
   ```
   6. Install the *latest* Docker packages:
   ```
-  sudo apt-get install docker-ce docker-ce-cli containerd.io
+  sudo apt install docker-ce docker-ce-cli containerd.io
   ```
   7. Upload your JSON file to your server:
 
@@ -97,7 +97,10 @@ rclone config
   - Press *Enter* for `root_folder_id`
   - Enter `/*.json` for `service_account_file`
 
-
+3. Create directory for VODs:
+```
+mkdir /VODs
+```
 3. Mount Google Drive as local filesystem:
 ```
 rclone mount --daemon --drive-impersonate user@domain.com gdrive:VODs /VODs
