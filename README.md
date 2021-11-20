@@ -111,12 +111,12 @@ rclone mount --daemon --drive-impersonate user@domain.com gdrive:VODs /VODs
 ### **Step 4 - Create Docker Containers**
 1. Create Docker Containers for each Twitch Stream:
 ```
-docker create --name TwitchUsername --restart unless-stopped -v /VODs/TwitchUsernameVOD:/home/download -e streamLink='twitch.tv/TwitchUsername' -e streamQuality='best' -e streamName='TwitchUsername' -e streamOptions='--twitch-disable-hosting --twitch-disable-ads' -e uid='0' -e gid='0' lauwarm/streamlink-recorder
+docker create --name TwitchUsername --restart unless-stopped -v /VODs/TwitchUsernameVOD:/home/download -e streamLink='twitch.tv/TwitchUsername' -e streamQuality='best' -e streamName='TwitchUsername' -e streamOptions='--twitch-disable-hosting --twitch-disable-ads' -e uid='0' -e gid='0' concpt/base
 ```
 2. Run Docker Containers:
 ```
 docker start TwitchUsername
 ```
-  **Replace `TwitchUsername` with your desired Twitch username**
+  **Replace `TwitchUsername` with desired Twitch username**
 
   *If you want to record multiple streams, repeat Step 4.*
